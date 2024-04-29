@@ -1337,7 +1337,7 @@ contract versusAccessPass is ERC721Enumerable, Ownable {
   string public notRevealedUri;
   uint256 public cost = 25 ether;
   uint256 public maxSupply = 240;
-  uint256 public maxMintAmount = 10;
+  uint256 public maxMintAmount = 100;
   uint256 public nftPerAddressLimit = 500;
   bool public paused = false;
   bool public revealed = false;
