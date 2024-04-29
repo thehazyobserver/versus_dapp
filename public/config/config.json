@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
-  "SCAN_LINK": "https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
+  "CONTRACT_ADDRESS": "0x14fc092bf3d1feabf8fc22ee327a9f0a8ca30753",
+  "SCAN_LINK": "https://ftmscan.com/address/0x14fc092bf3d1feabf8fc22ee327a9f0a8ca30753",
   "NETWORK": {
-    "NAME": "Polygon",
-    "SYMBOL": "Matic",
-    "ID": 137
+    "NAME": "FANTOM OPERA",
+    "SYMBOL": "FTM",
+    "ID": 250
   },
   "NFT_NAME": "Nerdy Coder Clones",
   "SYMBOL": "NCC",
