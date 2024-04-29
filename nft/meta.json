@@ -1,0 +1,13 @@
+{
+    "name":  "Versus Access Pass #1",
+    "image":  "ipfs://QmeS2ce3qvWGDEPDWKWCqExvT3AEhoC63pjsenkU7ouKA3/1.png",
+    "attributes":  [
+                       {
+                           "trait_type":  "Card",
+                           "value":  "Black"
+                       }
+                   ],
+    "collectionName":  "Versus Access Pass",
+    "description":  "Chaos Emeralds are magical gemstones containing infinite power. Although they've been depicted in a variety of colors and quantities, there are typically seven distinct emeralds: peridot (green), aquamarine (cyan), sapphire (blue), ruby (red), amethyst (purple), topaz (yellow), and diamond (grey/silver). Chaos Emeralds have often been the center of conflict across space and time in several different realities.",
+    "compiler":  "NFT Generator for Figma, https://www.figma.com/community/plugin/1052280914006102970"
+}
