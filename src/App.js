@@ -275,11 +275,16 @@ function App() {
                 <s.SpacerSmall />
                 <s.SpacerXSmall />
                 <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
-              Versus Access Passes are your key to the Fantom Versus! ecosystem. Access passes allow holders free entry into any Versus! sponsored tournaments along with a variety of perks offered through our platform. Tier 1 passes come in three colors, red, blue, and green. Collect all three for a surprise!
-                </s.TextDescription>
-                <s.SpacerSmall />
+  style={{
+    textAlign: "center",
+    color: "var(--accent-text)",
+    fontStyle: "italic",
+    fontWeight: "bold"
+  }}
+>
+  Versus Access Passes are your key to the Fantom Versus! ecosystem. Access passes allow holders free entry into any Versus! sponsored tournaments along with a variety of perks offered through our platform. Tier 1 passes come in three colors, red, blue, and green. Collect all three for a surprise!
+</s.TextDescription>
+<s.SpacerSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
