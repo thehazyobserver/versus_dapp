@@ -363,7 +363,16 @@ function App() {
                         {claimingNft ? "BUSY" : "BUY"}
                       </StyledButton>
                     </s.Container>
-                  </>
+                    <s.SpacerSmall />
+<s.TextDescription
+  style={{
+    textAlign: "center",
+    color: "var(--accent-text)",
+  }}
+>
+  Versus Access Passes are your key to the Fantom Versus! ecosystem. Access passes allow holders free entry into any Versus! sponsored tournaments along with a variety of perks offered through our platform. Tier 1 passes come in three colors, red, blue, and green. Collect all three for a surprise!
+</s.TextDescription>
+</>
                 )}
               </>
             )}
