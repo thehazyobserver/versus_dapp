@@ -74,7 +74,7 @@ Note: this dapp is designed to work with the intended NFT smart contract, that o
 Make sure you copy the contract ABI from remix and paste it in the `public/config/abi.json` file.
 (follow the youtube video if you struggle with this part).
 
-Now you will need to create and change 2 images and a gif in the `public/config/images` folder, `bg.png`, `example.gif` and `logo.png`.
+Now you will need to create and change 2 images and a gif in the `public/config/images` folder, `bg.png`, `example.png` and `logo.png`.
 
 Next change the theme colors to your liking in the `public/config/theme.css` file.
 
