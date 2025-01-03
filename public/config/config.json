@@ -1,16 +1,16 @@
 {
-  "CONTRACT_ADDRESS": "0x14fc092bf3d1feabf8fc22ee327a9f0a8ca30753",
-  "SCAN_LINK": "https://ftmscan.com/address/0x14fc092bf3d1feabf8fc22ee327a9f0a8ca30753",
+  "CONTRACT_ADDRESS": "0xfB579769194659dA4da4f7aB37308dEA2985E5d9",
+  "SCAN_LINK": "https://sonicscan.org/address/0xfb579769194659da4da4f7ab37308dea2985e5d9",
   "NETWORK": {
-    "NAME": "FANTOM OPERA",
-    "SYMBOL": "FTM",
-    "ID": 250
+    "NAME": "Sonic Mainnet",
+    "SYMBOL": "S",
+    "ID": 146
   },
-  "NFT_NAME": "Versus Access Pass",
-  "SYMBOL": "VSPASS",
-  "MAX_SUPPLY": 240,
-  "WEI_COST": 25000000000000000000,
-  "DISPLAY_COST": 25,
+  "NFT_NAME": "Bandit KidZ",
+  "SYMBOL": "KidZ",
+  "MAX_SUPPLY": 375,
+  "WEI_COST": 60000000000000000000,
+  "DISPLAY_COST": 60,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
   "MARKETPLACE_LINK": "https://opensea.io/collection/nerdy-coder-clones",

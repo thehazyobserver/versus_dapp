@@ -282,7 +282,7 @@ function App() {
     fontWeight: "bold"
   }}
 >
-  Versus Access Passes are your key to the Fantom Versus! ecosystem. Access passes allow holders free entry into any Versus! sponsored tournaments along with a variety of perks offered through our platform. Tier 1 passes come in three colors, red, blue, and green. Collect all three for a surprise!
+  Bandit Kidz
 </s.TextDescription>
 <s.SpacerSmall />
                 {blockchain.account === "" ||
