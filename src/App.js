@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
@@ -101,6 +101,7 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  const [whitelistAllocation, setWhitelistAllocation] = useState(0);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -185,12 +186,22 @@ function App() {
     SET_CONFIG(config);
   };
 
+  const getWhitelistAllocation = async () => {
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      const allocation = await blockchain.smartContract.methods
+        .getWhitelistAllocation(blockchain.account)
+        .call();
+      setWhitelistAllocation(allocation);
+    }
+  };
+
   useEffect(() => {
     getConfig();
   }, []);
 
   useEffect(() => {
     getData();
+    getWhitelistAllocation();
   }, [blockchain.account]);
 
   return (
@@ -273,18 +284,17 @@ function App() {
                   Excluding gas fees.
                 </s.TextDescription>
                 <s.SpacerSmall />
-                <s.SpacerXSmall />
                 <s.TextDescription
-  style={{
-    textAlign: "center",
-    color: "var(--accent-text)",
-    fontStyle: "italic",
-    fontWeight: "bold"
-  }}
->
-  Bandit Kidz
-</s.TextDescription>
-<s.SpacerSmall />
+                  style={{
+                    textAlign: "center",
+                    color: "var(--accent-text)",
+                    fontStyle: "italic",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Bandit Kidz
+                </s.TextDescription>
+                <s.SpacerSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
@@ -329,6 +339,15 @@ function App() {
                       }}
                     >
                       {feedback}
+                    </s.TextDescription>
+                    <s.SpacerMedium />
+                    <s.TextDescription
+                      style={{
+                        textAlign: "center",
+                        color: "var(--accent-text)",
+                      }}
+                    >
+                      Whitelist Allocation: {whitelistAllocation}
                     </s.TextDescription>
                     <s.SpacerMedium />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
