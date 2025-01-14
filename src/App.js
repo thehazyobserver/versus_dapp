@@ -102,6 +102,7 @@ function App() {
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [whitelistAllocation, setWhitelistAllocation] = useState(0);
+  const [remainingAllocation, setRemainingAllocation] = useState(0);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -115,21 +116,25 @@ function App() {
     MAX_SUPPLY: 1,
     WEI_COST: 0,
     DISPLAY_COST: 0,
+    WHITELIST_COST: 0,
+    PUBLIC_COST: 0,
     GAS_LIMIT: 0,
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
 
-  const claimNFTs = () => {
-    let cost = CONFIG.WEI_COST;
+  const claimNFTs = (cost) => {
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
+
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
+
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
+
     blockchain.smartContract.methods
       .mint(mintAmount)
       .send({
@@ -189,9 +194,13 @@ function App() {
   const getWhitelistAllocation = async () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       const allocation = await blockchain.smartContract.methods
-        .getWhitelistAllocation(blockchain.account)
+        .whitelistMintAllowance(blockchain.account)
         .call();
       setWhitelistAllocation(allocation);
+      const minted = await blockchain.smartContract.methods
+        .addressMintedBalance(blockchain.account)
+        .call();
+      setRemainingAllocation(allocation - minted);
     }
   };
 
@@ -295,6 +304,20 @@ function App() {
                   Bandit Kidz
                 </s.TextDescription>
                 <s.SpacerSmall />
+                <s.TextDescription
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
+                  Whitelist Cost: {CONFIG.WHITELIST_COST / 1e18}{" "}
+                  {CONFIG.NETWORK.SYMBOL}
+                </s.TextDescription>
+                <s.SpacerXSmall />
+                <s.TextDescription
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
+                  Public Cost: {CONFIG.PUBLIC_COST / 1e18}{" "}
+                  {CONFIG.NETWORK.SYMBOL}
+                </s.TextDescription>
+                <s.SpacerSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
@@ -387,11 +410,22 @@ function App() {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          claimNFTs();
+                          claimNFTs(CONFIG.WHITELIST_COST);
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "BUSY" : "MINT WL"}
+                      </StyledButton>
+                      <s.SpacerSmall />
+                      <StyledButton
+                        disabled={claimingNft ? 1 : 0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          claimNFTs(CONFIG.PUBLIC_COST);
+                          getData();
+                        }}
+                      >
+                        {claimingNft ? "BUSY" : "MINT PUBLIC"}
                       </StyledButton>
                     </s.Container>
                   </>
