@@ -14,7 +14,7 @@
   "WHITELIST_COST": 50000000000000000000, 
   "PUBLIC_COST": 100000000000000000000, 
   "GAS_LIMIT": 285000,
-  "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/nerdy-coder-clones",
+  "MARKETPLACE": "Paintswap",
+  "MARKETPLACE_LINK": "https://paintswap.finance/",
   "SHOW_BACKGROUND": true
 }
