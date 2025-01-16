@@ -101,8 +101,6 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
-  const [whitelistAllocation, setWhitelistAllocation] = useState(0);
-  const [remainingAllocation, setRemainingAllocation] = useState(0);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -114,7 +112,6 @@ function App() {
     NFT_NAME: "",
     SYMBOL: "",
     MAX_SUPPLY: 1,
-    WEI_COST: 0,
     DISPLAY_COST: 0,
     WHITELIST_COST: 0,
     PUBLIC_COST: 0,
@@ -191,26 +188,12 @@ function App() {
     SET_CONFIG(config);
   };
 
-  const getWhitelistAllocation = async () => {
-    if (blockchain.account !== "" && blockchain.smartContract !== null) {
-      const allocation = await blockchain.smartContract.methods
-        .whitelistMintAllowance(blockchain.account)
-        .call();
-      setWhitelistAllocation(allocation);
-      const minted = await blockchain.smartContract.methods
-        .addressMintedBalance(blockchain.account)
-        .call();
-      setRemainingAllocation(allocation - minted);
-    }
-  };
-
   useEffect(() => {
     getConfig();
   }, []);
 
   useEffect(() => {
     getData();
-    getWhitelistAllocation();
   }, [blockchain.account]);
 
   return (
@@ -364,15 +347,6 @@ function App() {
                       {feedback}
                     </s.TextDescription>
                     <s.SpacerMedium />
-                    <s.TextDescription
-                      style={{
-                        textAlign: "center",
-                        color: "var(--accent-text)",
-                      }}
-                    >
-                      Whitelist Allocation: {whitelistAllocation}
-                    </s.TextDescription>
-                    <s.SpacerMedium />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
@@ -406,17 +380,6 @@ function App() {
                     </s.Container>
                     <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <StyledButton
-                        disabled={claimingNft ? 1 : 0}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          claimNFTs(CONFIG.WHITELIST_COST);
-                          getData();
-                        }}
-                      >
-                        {claimingNft ? "BUSY" : "MINT WL"}
-                      </StyledButton>
-                      <s.SpacerSmall />
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
