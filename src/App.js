@@ -290,13 +290,6 @@ function App() {
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Whitelist Cost: {CONFIG.WHITELIST_COST / 1e18}{" "}
-                  {CONFIG.NETWORK.SYMBOL}
-                </s.TextDescription>
-                <s.SpacerXSmall />
-                <s.TextDescription
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
-                >
                   Public Cost: {CONFIG.PUBLIC_COST / 1e18}{" "}
                   {CONFIG.NETWORK.SYMBOL}
                 </s.TextDescription>
